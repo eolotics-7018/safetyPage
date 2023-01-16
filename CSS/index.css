@@ -1,0 +1,35 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+
+}
+body{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: url(../IMG/fondo.jpg)  no-repeat ;
+    background-size: cover;
+    
+    
+   
+
+}
+
+.formulario{
+    width: 100%;
+    height: 50px;
+    max-width: 400px;
+    position:relative;
+    overflow: hidden;
+    background:none;
+
+}
+.formulario input{
+    background-color: yellow;
+    height: 30px;
+}
