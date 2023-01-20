@@ -1,0 +1,157 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url(../IMG/fondo.jpg) no-repeat;
+    background-size: 100% 100%;
+}
+
+.formulario {
+    width: 100%;
+    height: 50px;
+    max-width: 400px;
+    position: relative;
+    overflow: hidden;
+    background: none;
+}
+
+.formulario input {
+    background-color: yellow;
+    height: 30px;
+}
+
+.pregunta {
+    position: relative;
+    left: 350px;
+}
+
+.buttonsContainer {
+    height: 400px;
+    width: 1000px;
+}
+
+h2 {
+    position: relative;
+    top: 17px;
+    left: 15px;
+}
+
+.seguridad img {
+    height: 70px;
+    width: 150px;
+    max-height: 70px;
+    max-width: 150px;
+    position: relative;
+    top: 40px;
+    left: 20px;
+}
+
+.programacion img {
+    height: 70px;
+    width: 150px;
+    position: relative;
+    left: 400px;
+    top: -30px;
+
+}
+
+.disenio img {
+    height: 70px;
+    width: 150px;
+    position: relative;
+    top: -100px;
+    left: 800px;
+}
+
+.electronica img {
+    height: 70px;
+    width: 150px;
+    position: relative;
+    left: 20px;
+}
+
+.administracion img {
+    height: 70px;
+    width: 150px;
+    position: relative;
+    left: 400px;
+    top: -70px;
+}
+
+.mecanica img {
+    height: 70px;
+    width: 150px;
+    position: relative;
+    left: 800px;
+    top: -140px;
+}
+
+.soldadura img {
+    height: 70px;
+    width: 150px;
+    position: relative;
+    top: 40px;
+    left: 150px;
+}
+
+.ensambraje img {
+    height: 70px;
+    width: 150px;
+    position: relative;
+    left: 650px;
+    top: -30px;
+}
+
+.corte img {
+    height: 70px;
+    width: 150px;
+    position: relative;
+    left: 150px;
+    top: 100px;
+}
+
+.administrativo img {
+    height: 70px;
+    width: 150px;
+    position: relative;
+    left: 650px;
+    top: 30px;
+}
+
+.pregunta3 {
+    position: relative;
+    left: 255px;
+}
+
+.laboratorio img {
+    height: 70px;
+    width: 150px;
+    position: relative;
+    left: 150px;
+    top: 100px;
+}
+
+.areaLibre img {
+    height: 70px;
+    width: 150px;
+    position: relative;
+    left: 650px;
+    top: 30px;
+}
+
+.ultimo form input {
+    background-color: yellow;
+}
+
+.contenedor {
+    height: 100%;
+    width: 100%;
+}
