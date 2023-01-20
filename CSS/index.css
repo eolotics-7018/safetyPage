@@ -10,12 +10,10 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-
     background: url(../IMG/fondo.png) no-repeat;
     background-size: 100% 100%;
-    
-}
 
+}
 
 .formulario {
     width: 100%;
@@ -24,31 +22,30 @@ body {
     position: relative;
     overflow: hidden;
     background: none;
-
-
 }
-
 
 .formulario input {
     background-color: yellow;
     height: 30px;
-
 }
-.pregunta{
+
+.pregunta {
     position: relative;
     left: 350px;
 }
-.buttonsContainer{
+
+.buttonsContainer {
     height: 400px;
     width: 1000px;
 }
-h2{
+
+h2 {
     position: relative;
     top: 17px;
     left: 15px;
 }
-.seguridad img{
-   
+
+.seguridad img {
     height: 70px;
     width: 150px;
     max-height: 70px;
@@ -57,8 +54,8 @@ h2{
     top: 40px;
     left: 20px;
 }
-.programacion img{
-    
+
+.programacion img {
     height: 70px;
     width: 150px;
     position: relative;
@@ -66,100 +63,96 @@ h2{
     top: -30px;
 
 }
-.disenio  img{
-   
+
+.disenio img {
     height: 70px;
     width: 150px;
     position: relative;
     top: -100px;
     left: 800px;
-    
 }
 
-.electronica img{
+.electronica img {
     height: 70px;
     width: 150px;
-    position:relative;
+    position: relative;
     left: 20px;
-
 }
-.administracion img{
+
+.administracion img {
     height: 70px;
     width: 150px;
     position: relative;
     left: 400px;
     top: -70px;
-
 }
-.mecanica img{
+
+.mecanica img {
     height: 70px;
     width: 150px;
     position: relative;
     left: 800px;
     top: -140px;
-
 }
-.soldadura img{
+
+.soldadura img {
     height: 70px;
     width: 150px;
     position: relative;
     top: 40px;
     left: 150px;
-
-
 }
-.ensambraje img{
+
+.ensambraje img {
     height: 70px;
     width: 150px;
     position: relative;
     left: 650px;
     top: -30px;
-
-
 }
-.corte img{
-   
+
+.corte img {
     height: 70px;
     width: 150px;
     position: relative;
     left: 150px;
     top: 100px;
-
 }
 
-.administrativo img{
-   
+.administrativo img {
     height: 70px;
     width: 150px;
     position: relative;
     left: 650px;
     top: 30px;
-
 }
-.pregunta3{
+
+.pregunta3 {
     position: relative;
     left: 255px;
 }
-.laboratorio img{
+
+.laboratorio img {
     height: 70px;
     width: 150px;
     position: relative;
     left: 150px;
     top: 100px;
-
 }
-.areaLibre img{
+
+.areaLibre img {
     height: 70px;
     width: 150px;
     position: relative;
     left: 650px;
     top: 30px;
 }
+
 .ultimo form input {
     background-color: yellow;
 }
 
-.contenedor{
+.contenedor {
     height: 100%;
     width: 100%;
 }
