@@ -6,8 +6,11 @@
 
 body {
     font-family: 'Fascinate', cursive;
-    font-size: 28px;
+    font-weight: bold;
+    font-variant: small-caps;
+    font-size: 32px;
     background: url(../IMG/fondo.jpg) no-repeat top left fixed;
+    background-size: cover;
 }
 
 a {
@@ -27,7 +30,7 @@ a {
     padding: 20px;
 }
 
-.nombre {
+.fase {
     width: 100%;
     position: relative;
     top: 50%;
@@ -42,12 +45,12 @@ a {
 .pregunta {
     text-align: center;
     color: black;
-    text-shadow: 1px 1px 2px #aaa, 1px 1px #fff;
+    text-shadow: 1px 1px 2px #aaa, 1px 1px rgb(255, 155, 67);
     margin-bottom: 10px;
 }
 
 .entrada {
-    min-width: 80%;
+    min-width: 70%;
     min-height: 30px;
     max-width: 800px;
     background-color: #FED308;
@@ -55,7 +58,9 @@ a {
     border-style: none none solid none;
     border-radius: 1px;
     outline: none;
-    font-size: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: normal;
+    font-size: 24px;
     text-align: center;
 }
 
@@ -70,7 +75,9 @@ a {
     background-color: #000;
     color: #fff;
     min-width: 100px;
-    font-size: 16px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-variant: small-caps;
+    font-size: 20px;
     padding: 5px;
     cursor: pointer;
     border: none;
@@ -93,7 +100,45 @@ a {
     background-color: green;
 }
 
-@media only screen and (min-width: 430px) {
+.areas {
+    display: grid;
+    row-gap: 20px;
+    padding: 10px;
+    grid-template-columns: 1fr;
+    margin-top: 10px;
+}
+
+.areas > div {
+    background-color: #000;
+    color: #FED308;
+    padding: 8px 15px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: normal;
+    font-size: 24px;
+}
+
+/*
+@media only screen and (max-width: 360px){
+
+    .areas {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px 20px;
+    }
+}
+/*
+
+@media only screen and (min-width: 425px) {
+    
+    body {
+        font-size: 42px;
+    }
+
+    .entrada {
+        font-size: 32px;
+    }
+}
+
+@media only screen and (min-width: 768px) {
 
     body {
         font-size: 48px;
@@ -103,10 +148,20 @@ a {
         height: 80%;
     }
 
-    .entrada {
-        min-width: 60%;
-        min-height: 45px;
-        font-size: 32px;
+    .areas {
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 40px 20px;
+    }
+
+    .entrada, .areas > div {
+        font-size: 36px;
+    }
+}
+
+@media only screen and (min-width: 880px) {
+    
+    .entrada, .areas > div {
+        font-size: 42px;
     }
 
     .boton {
@@ -130,4 +185,44 @@ a {
     .boton.siguiente:active {
         background-color: green;
     }
+
+    .areas {
+        gap: 60px 40px;
+    }    
 }
+
+@media only screen and (min-width: 1150px) {
+    body {
+        font-size: 72px;
+    }
+
+    .areas {
+        margin-top: 20px;
+        gap: 80px 60px;
+    }
+
+    .entrada, .areas > div {
+        font-size: 48px;
+    }
+}
+
+@media only screen and (min-width: 1900px){
+    body {
+        font-size: 140px;
+    }
+
+    .areas {
+        gap: 120px 80px;
+    }
+
+    .entrada, .areas > div {
+        font-size: 96px;
+    }
+
+    .boton {
+        font-size: 72px;
+        min-width: 300px;
+        border-radius: 10px;
+        box-shadow: 0 15px #999;
+    }
+}*/

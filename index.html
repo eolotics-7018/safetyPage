@@ -8,15 +8,29 @@
     <link rel="stylesheet" href="CSS/index.css">
     <script src="JS/main.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Fascinate&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="contenedor">
-        <div class="nombre">
+
+        <div class="fase nombre" style="display:none">
             <span class="pregunta">¿Cuál es tu nombre?</span>
             <div class="entrada" contenteditable="true"></div>
             <div class="botones">
                 <button class="boton borrar">Borrar</button>
                 <button class="boton siguiente">Siguiente</button>
+            </div>
+        </div>
+
+        <div class="fase area">
+            <span class="pregunta">¿A qué area perteneces?</span>
+            <div class="areas">
+                <div>Administración</div>
+                <div>Diseño</div>
+                <div>Electrónica</div>
+                <div>Mecánica</div>
+                <div>Programación</div>
+                <div>Seguridad</div>
             </div>
         </div>
     </div>
