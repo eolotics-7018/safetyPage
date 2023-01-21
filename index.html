@@ -6,12 +6,18 @@
     <title>Safety</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel="stylesheet" href="CSS/index.css">
+    <script src="JS/main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 </head>
 <body>
     <div class="contenedor">
         <div class="nombre">
             <span class="pregunta">¿Cuál es tu nombre?</span>
-            <input type="text" name="nombre" id="nombre" autocomplete="off">
+            <div class="entrada" contenteditable="true"></div>
+            <div class="botones">
+                <button class="boton borrar">Borrar</button>
+                <button class="boton siguiente">Siguiente</button>
+            </div>
         </div>
     </div>
 </body>
