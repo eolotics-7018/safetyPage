@@ -97,41 +97,69 @@ a {
 }
 
 .boton.borrar:active {
-    background-color: darkred;
+    background-color: darkred !important;
 }
 
 .boton.siguiente:active {
-    background-color: green;
+    background-color: green !important;
 }
 
-.areas {
+.caja {
     display: flex;
-    max-width: 45rem;
     flex-wrap: wrap;
     justify-content: center;
 }
 
-.areas > div {
-    width: 10.625rem;
+.opcion {
     background-color: #000;
     color: #FED308;
     padding: 0.5rem 1rem;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-weight: normal;
     font-size: 1.5rem;
+}
+
+.areas {
+    max-width: 45rem;
+}
+
+.areas > div {
+    width: 10.625rem;
+    margin: 1rem 1rem 0.5rem 1rem;
+}
+
+.trabajos {
+    max-width: 41.25rem;
+}
+
+.trabajos > div {
+    width: 11.5rem;
+    margin: 1rem 1.5rem 0.5rem 1.5rem;
+}
+
+.lugares > div {
     margin: 1rem 1rem 0.5rem 1rem;
 }
 
 @media only screen and (min-width: 786px){
     html {
-        font-size: 1.5em;
+        font-size: 1.4em;
     }
 }
 
 @media only screen and (min-width: 1200px) {
     html {
-        font-size: 2.25em;
+        font-size: 2em;
     }
+
+    .boton.borrar:hover {
+        background-color: red;
+    }
+
+    .boton.siguiente:hover {
+        background-color: limegreen;
+    }
+
 }
 
 @media only screen and (min-width: 1920px){
