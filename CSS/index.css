@@ -4,11 +4,15 @@
     box-sizing: border-box;
 }
 
+html {
+    font-size: 100%;
+}
+
 body {
     font-family: 'Fascinate', cursive;
     font-weight: bold;
     font-variant: small-caps;
-    font-size: 32px;
+    font-size: 2.25rem;
     background: url(../IMG/fondo.jpg) no-repeat top left fixed;
     background-size: cover;
 }
@@ -25,9 +29,9 @@ a {
     width: 85%;
     height: 90%;
     background-color: #FED308;
-    border: 2px solid #000;
-    border-radius: 10px;
-    padding: 20px;
+    border: 0.125rem solid #000;
+    border-radius: 0.625rem;
+    padding: 0.625rem;
 }
 
 .fase {
@@ -45,22 +49,22 @@ a {
 .pregunta {
     text-align: center;
     color: black;
-    text-shadow: 1px 1px 2px #aaa, 1px 1px rgb(255, 155, 67);
-    margin-bottom: 10px;
+    text-shadow: 0.0625rem 0.0625rem 0.125rem #aaa, 0.0625rem 0.0625rem rgb(255, 155, 67);
+    margin-bottom: 0.625rem;
 }
 
 .entrada {
     min-width: 70%;
-    min-height: 30px;
-    max-width: 800px;
+    min-height: 1.875rem;
+    max-width: 50rem;
     background-color: #FED308;
-    border: 3px solid #000;
+    border: 0.1875rem solid #000;
     border-style: none none solid none;
-    border-radius: 1px;
+    border-radius: 0.0625rem;
     outline: none;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-weight: normal;
-    font-size: 24px;
+    font-size: 1.5rem;
     text-align: center;
 }
 
@@ -68,28 +72,28 @@ a {
     width: 100%;
     display: flex;
     justify-content: space-evenly;
-    margin-top: 20px;
+    margin-top: 1.25rem;
 }
 
 .boton {
     background-color: #000;
     color: #fff;
-    min-width: 100px;
+    min-width: 6.25rem;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-variant: small-caps;
-    font-size: 20px;
-    padding: 5px;
+    font-size: 1.25rem;
+    padding: 0.3125rem;
     cursor: pointer;
     border: none;
-    border-radius: 5px;
-    margin: 5px 0;
-    box-shadow: 0 5px #999;
+    border-radius: 0.3125rem;
+    margin: 0.3125rem 0;
+    box-shadow: 0 0.3125rem #999;
     user-select: none;
 }
 
 .boton:active {
-    box-shadow: 0 5px #666;
-    transform: translateY(4px);
+    box-shadow: 0 0.3125rem #666;
+    transform: translateY(0.25rem);
 }
 
 .boton.borrar:active {
@@ -101,128 +105,37 @@ a {
 }
 
 .areas {
-    display: grid;
-    row-gap: 20px;
-    padding: 10px;
-    grid-template-columns: 1fr;
-    margin-top: 10px;
+    display: flex;
+    max-width: 45rem;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .areas > div {
+    width: 10.625rem;
     background-color: #000;
     color: #FED308;
-    padding: 8px 15px;
+    padding: 0.5rem 1rem;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-weight: normal;
-    font-size: 24px;
+    font-size: 1.5rem;
+    margin: 1rem 1rem 0.5rem 1rem;
 }
 
-/*
-@media only screen and (max-width: 360px){
-
-    .areas {
-        grid-template-columns: 1fr 1fr;
-        gap: 30px 20px;
-    }
-}
-/*
-
-@media only screen and (min-width: 425px) {
-    
-    body {
-        font-size: 42px;
-    }
-
-    .entrada {
-        font-size: 32px;
+@media only screen and (min-width: 786px){
+    html {
+        font-size: 1.5em;
     }
 }
 
-@media only screen and (min-width: 768px) {
-
-    body {
-        font-size: 48px;
-    }
-
-    .contenedor {
-        height: 80%;
-    }
-
-    .areas {
-        grid-template-columns: 1fr 1fr 1fr;
-        gap: 40px 20px;
-    }
-
-    .entrada, .areas > div {
-        font-size: 36px;
+@media only screen and (min-width: 1200px) {
+    html {
+        font-size: 2.25em;
     }
 }
 
-@media only screen and (min-width: 880px) {
-    
-    .entrada, .areas > div {
-        font-size: 42px;
-    }
-
-    .boton {
-        font-size: 28px;
-        min-width: 150px;
-        border-radius: 7px;
-    }
-   
-    .boton.borrar:hover {
-        background-color: red;
-    }
-
-    .boton.borrar:active {
-        background-color: darkred;
-    }    
-    
-    .boton.siguiente:hover {
-        background-color: limegreen;
-    }
-
-    .boton.siguiente:active {
-        background-color: green;
-    }
-
-    .areas {
-        gap: 60px 40px;
-    }    
-}
-
-@media only screen and (min-width: 1150px) {
-    body {
-        font-size: 72px;
-    }
-
-    .areas {
-        margin-top: 20px;
-        gap: 80px 60px;
-    }
-
-    .entrada, .areas > div {
-        font-size: 48px;
+@media only screen and (min-width: 1920px){
+    html {
+        font-size: 3em;
     }
 }
-
-@media only screen and (min-width: 1900px){
-    body {
-        font-size: 140px;
-    }
-
-    .areas {
-        gap: 120px 80px;
-    }
-
-    .entrada, .areas > div {
-        font-size: 96px;
-    }
-
-    .boton {
-        font-size: 72px;
-        min-width: 300px;
-        border-radius: 10px;
-        box-shadow: 0 15px #999;
-    }
-}*/
