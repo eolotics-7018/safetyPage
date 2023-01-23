@@ -141,9 +141,24 @@ a {
     margin: 1rem 1rem 0.5rem 1rem;
 }
 
+.tiempos > div {
+    min-width: 3rem;
+    align-self: baseline;
+}
+
+.horas {
+    margin-right: 1rem;
+}
+
 @media only screen and (min-width: 786px){
     html {
         font-size: 1.4em;
+    }
+
+    .tiempos {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        margin-bottom: 0.5rem;
     }
 }
 
