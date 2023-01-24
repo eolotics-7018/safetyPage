@@ -50,7 +50,7 @@ a {
     text-align: center;
     color: black;
     text-shadow: 0.0625rem 0.0625rem 0.125rem #aaa, 0.0625rem 0.0625rem rgb(255, 155, 67);
-    margin-bottom: 0.625rem;
+    margin-bottom: 0.7rem;
 }
 
 .entrada {
@@ -137,6 +137,27 @@ a {
     margin: 1rem 1.5rem 0.5rem 1.5rem;
 }
 
+.epp {
+    justify-content: space-evenly;
+}
+
+.epp .caja {
+    flex-direction: column;
+    margin: 0 5%;
+}
+
+.imagen {
+    width: 4.5rem;
+    align-self: center;
+}
+
+.imagen ~ div {
+    font-family: sans-serif;
+    font-size: 1.1rem;
+    max-width: 6rem;
+    margin-top: 0.2rem;
+}
+
 .lugares > div {
     margin: 1rem 1rem 0.5rem 1rem;
 }
@@ -177,8 +198,18 @@ a {
 
 }
 
-@media only screen and (min-width: 1920px){
+@media only screen and (min-width: 1920px) {
     html {
         font-size: 3em;
+    }
+}
+
+@media only screen and (max-height: 640px) {
+    .pregunta {
+        margin-bottom: 0 !important;
+    }
+
+    .epp .caja {
+        margin: 0 5%;
     }
 }
