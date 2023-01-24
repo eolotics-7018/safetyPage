@@ -205,11 +205,14 @@ a {
 }
 
 @media only screen and (max-height: 640px) {
-    .pregunta {
+    /* .pregunta {
         margin-bottom: 0 !important;
     }
 
     .epp .caja {
         margin: 0 5%;
+    } */
+    html {
+        font-size: 0.9em;
     }
 }
