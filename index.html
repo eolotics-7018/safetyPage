@@ -7,13 +7,13 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel="stylesheet" href="CSS/index.css">
     <script src="JS/jquery-3.6.3.min.js"></script>
-    <script src="JS/main.js"></script>
+    <script src="JS/main.js" type="module"></script>
     <link href="https://fonts.googleapis.com/css2?family=Fascinate&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="contenedor">
+    <div class="contenedor" style="display:none">
 
-        <div class="fase nombre" style="display:none">
+        <div class="fase nombre">
             <span class="pregunta">¿Cuál es tu nombre?</span>
             <div class="entrada" contenteditable="true"></div>
             <div class="botones">
@@ -34,7 +34,7 @@
             </div>
         </div>
 
-        <div class="fase trabajo" style="display: none">
+        <div class="fase trabajo" style="display:none">
             <span class="pregunta">¿Qué tipo de trabajo realizarás?</span>
             <div class="caja trabajos">
                 <div class="opcion">Administrativo</div>
@@ -44,7 +44,7 @@
             </div>
         </div>
 
-        <div class="fase equipo">
+        <div class="fase equipo" style="display: none">
             <span class="pregunta">Deberás ocupar el siguiente Equipo de Protección Personal:</span>
             <div class="caja epp">
                 <div class="caja">
@@ -56,15 +56,19 @@
                     <div>Casco</div>
                 </div>
                 <div class="caja">
+                    <img src="IMG/cubrebocas.png" alt="cubrebocas" class="imagen">
+                    <div>Cubrebocas</div>
+                </div>
+                <div class="caja">
                     <img src="IMG/guantes.png" alt="guantes" class="imagen">
                     <div>Guantes</div>
                 </div>
                 <div class="caja">
-                    <img src="IMG/lentes_de_seguridad.png" alt="lentes de seguridad" class="imagen">
+                    <img src="IMG/lentes_de_seguridad.png" alt="lentes_de_seguridad" class="imagen">
                     <div>Lentes de seguridad</div>
                 </div>
                 <div class="caja">
-                    <img src="IMG/tapones_auditivos.png" alt="tapones auditivos" class="imagen">
+                    <img src="IMG/tapones_auditivos.png" alt="tapones_auditivos" class="imagen">
                     <div>Tapones auditivos</div>
                 </div>
             </div>

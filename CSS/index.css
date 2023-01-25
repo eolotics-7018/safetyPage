@@ -43,7 +43,7 @@ a {
     text-align: center;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    /* align-items: center; */
 }
 
 .pregunta {
@@ -73,6 +73,7 @@ a {
     display: flex;
     justify-content: space-evenly;
     margin-top: 1.25rem;
+    opacity: 0;
 }
 
 .boton {
@@ -117,6 +118,7 @@ a {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-weight: normal;
     font-size: 1.5rem;
+    cursor: pointer;
 }
 
 .areas {
@@ -144,6 +146,8 @@ a {
 .epp .caja {
     flex-direction: column;
     margin: 0 5%;
+    display: none;
+    margin-top: 0.2rem;
 }
 
 .imagen {
@@ -154,8 +158,8 @@ a {
 .imagen ~ div {
     font-family: sans-serif;
     font-size: 1.1rem;
-    max-width: 6rem;
-    margin-top: 0.2rem;
+    max-width: 7rem;
+    margin-top: -0.4rem;
 }
 
 .lugares > div {

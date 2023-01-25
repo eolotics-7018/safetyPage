@@ -1,0 +1,20 @@
+{
+    "trabajos": [
+        {
+            "nombre": "Administrativo",
+            "epp": ["botas", "cubrebocas"]
+        },
+        {
+            "nombre": "Corte",
+            "epp": ["botas", "cubrebocas", "guantes", "lentes_de_seguridad", "tapones_auditivos"]
+        },
+        {
+            "nombre": "Ensamblaje",
+            "epp": ["botas", "cubrebocas", "guantes", "lentes_de_seguridad"]
+        },
+        {
+            "nombre": "Soldadura",
+            "epp": ["botas", "casco", "cubrebocas", "guantes", "lentes_de_seguridad"]
+        }
+    ]
+}
