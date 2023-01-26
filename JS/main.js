@@ -7,6 +7,16 @@ function textoAOracion(oracion) {
     return palabras.join(" ");
 }
 
+function siguienteFase(funcionExtra, funcionCadena) {
+    funcionExtra = funcionExtra || function() {};
+    funcionCadena = funcionCadena || function() {};
+
+    $(".fase:visible").fadeOut("slow", function(){
+        funcionExtra();
+        $(this).next().fadeIn("slow", funcionCadena);
+    });
+}
+
 $(document).ready(function() {
 
     // $(".contenedor").on("click", function() {
@@ -23,7 +33,7 @@ $(document).ready(function() {
         $(".nombre .entrada").focus().keydown(function(e) {
             if (e.which == 13) {
                 e.preventDefault();
-                $(".siguiente").click();
+                $(".aceptar").click();
             }
         }).keyup(function() {
             if ($(this).text().trim() != "") {
@@ -39,20 +49,27 @@ $(document).ready(function() {
         $(".botones").animate({opacity:0});
     });
     
-    $(".siguiente").click(function() {
+    $(".aceptar").click(function() {
         var nombre = textoAOracion($(".nombre .entrada").text().trim());
-        $(".nombre").fadeOut("slow", function(){
-            $(".area").fadeIn("slow");
-            console.log(nombre);
-        })
+        console.log(nombre);
+
+        siguienteFase(function(){$(".atras").fadeIn("slow")});
     });
+
+    $(".atras").click(function() {
+        if ($(".fase:visible").fadeOut("slow", function(){
+            $(this).prev().fadeIn();
+        }).prev().hasClass("nombre")) {
+            $(".atras").fadeOut();
+        }
+    });
+
+    $(".siguiente").click(function() {siguienteFase();});
 
     $(".areas .opcion").click(function() {
         var area = $(this).text();
-        $(".area").fadeOut("slow", function(){
-            $(".trabajo").fadeIn("slow");
-        })
         console.log(area);
+        siguienteFase();
     });
 
     $(".trabajos .opcion").click(function() {
@@ -72,4 +89,9 @@ $(document).ready(function() {
         });
     });
 
+    $(".lugares .opcion").click(function() {
+        var lugar = $(this).text();
+        console.log(lugar);
+        siguienteFase();
+    })
 })

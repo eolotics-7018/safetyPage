@@ -36,14 +36,12 @@ a {
 
 .fase {
     width: 100%;
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    height: 100%;
     text-align: center;
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
+    justify-content: center;
+    align-items: center;
 }
 
 .pregunta {
@@ -79,6 +77,7 @@ a {
 .boton {
     background-color: #000;
     color: #fff;
+    width: min-content;
     min-width: 6.25rem;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-variant: small-caps;
@@ -101,8 +100,16 @@ a {
     background-color: darkred !important;
 }
 
-.boton.siguiente:active {
+.boton.aceptar:active {
     background-color: green !important;
+}
+
+.boton.atras:active {
+    background-color: #444 !important;
+}
+
+.boton.siguiente:active {
+    background-color: darkblue !important;
 }
 
 .caja {
@@ -119,6 +126,13 @@ a {
     font-weight: normal;
     font-size: 1.5rem;
     cursor: pointer;
+    border-radius: 0.25rem;
+}
+
+.boton.atras {
+    position: absolute;
+    bottom: 0.5rem;
+    display: none;
 }
 
 .areas {
@@ -137,6 +151,10 @@ a {
 .trabajos > div {
     width: 11.5rem;
     margin: 1rem 1.5rem 0.5rem 1.5rem;
+}
+
+.equipo {
+    align-items: stretch;
 }
 
 .epp {
@@ -158,8 +176,16 @@ a {
 .imagen ~ div {
     font-family: sans-serif;
     font-size: 1.1rem;
-    max-width: 7rem;
+    max-width: 4.5rem;
+    display: flex;
+    justify-content: center;
     margin-top: -0.4rem;
+}
+
+.boton.siguiente {
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.5rem;
 }
 
 .lugares > div {
@@ -196,10 +222,17 @@ a {
         background-color: red;
     }
 
-    .boton.siguiente:hover {
+    .boton.aceptar:hover {
         background-color: limegreen;
     }
 
+    .boton.atras:hover {
+        background-color: gray;
+    }
+
+    .boton.siguiente:hover {
+        background-color: blue;
+    }
 }
 
 @media only screen and (min-width: 1920px) {
@@ -208,7 +241,7 @@ a {
     }
 }
 
-@media only screen and (max-height: 640px) {
+@media only screen and (max-height: 660px) {
     html {
         font-size: 0.9em;
     }

@@ -14,7 +14,7 @@
         },
         {
             "nombre": "Soldadura",
-            "epp": ["botas", "casco", "cubrebocas", "guantes", "lentes_de_seguridad"]
+            "epp": ["botas", "cubrebocas", "guantes", "lentes_de_seguridad"]
         }
     ]
 }
