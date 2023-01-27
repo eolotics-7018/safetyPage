@@ -91,6 +91,11 @@ a {
     user-select: none;
 }
 
+.desactivado {
+    cursor: initial;
+    pointer-events: none;
+}
+
 .boton:active {
     box-shadow: 0 0.3125rem #666;
     transform: translateY(0.25rem);
@@ -126,7 +131,14 @@ a {
     font-weight: normal;
     font-size: 1.5rem;
     cursor: pointer;
+    border: 1px solid black;
     border-radius: 0.25rem;
+    user-select: none;
+}
+
+.seleccion:hover {
+    background-color: #ffd900;
+    color: #000;
 }
 
 .boton.atras {

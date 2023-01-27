@@ -37,16 +37,20 @@ $(document).ready(function() {
             }
         }).keyup(function() {
             if ($(this).text().trim() != "") {
-                $(".botones").animate({opacity:1});
+                if ($(".botones > button").hasClass("desactivado")) {
+                    $(".botones > button").removeClass("desactivado");
+                    $(".botones").animate({opacity:1});
+                }
             } else {
+                $(".botones > button").addClass("desactivado");
                 $(".botones").animate({opacity:0});
             }
         });
     });
 
     $(".borrar").click(function() {
-        $(".nombre .entrada").text("");
-        $(".botones").animate({opacity:0});
+        $(".nombre .entrada").text("").focus();
+        $(".botones").animate({opacity:0}, function() {$(".botones > button").addClass("desactivado")});
     });
     
     $(".aceptar").click(function() {
@@ -64,7 +68,15 @@ $(document).ready(function() {
         }
     });
 
-    $(".siguiente").click(function() {siguienteFase();});
+    $(".siguiente").click(function() {siguienteFase()});
+
+    $(".opcion").mousedown(function(){
+        $(this).addClass("seleccion");
+    });
+
+    onmouseup = function() {
+        $(".opcion").removeClass("seleccion");
+    };
 
     $(".areas .opcion").click(function() {
         var area = $(this).text();
@@ -76,6 +88,7 @@ $(document).ready(function() {
         var trabajo = $(this).text();
         console.log(trabajo);
         $(".trabajo").fadeOut("slow", function(){
+            $(".epp .caja").hide();
             relacion.trabajos.forEach(elemento => {
                 if (elemento.nombre == trabajo) {
                     console.log(elemento.epp);
@@ -93,5 +106,13 @@ $(document).ready(function() {
         var lugar = $(this).text();
         console.log(lugar);
         siguienteFase();
-    })
+    });
+
+    $(".tiempos .entrada").on("keypress", function(e) {
+        if (e.which < 48 || e.which > 57) {
+            e.preventDefault();
+            return;
+        }
+
+    });
 })
