@@ -1,6 +1,6 @@
 import relacion from './trabajo_epp.json' assert { type : "json"};
 
-function textoAOracion(oracion) {
+function textoANombre(oracion) {
     let palabras = oracion.split(" ").map(palabra => {
         return palabra[0].toUpperCase() + palabra.slice(1);
     })
@@ -42,8 +42,7 @@ $(document).ready(function() {
                     $(".botones").animate({opacity:1});
                 }
             } else {
-                $(".botones > button").addClass("desactivado");
-                $(".botones").animate({opacity:0});
+                $(".botones").animate({opacity:0}, function() {$(".botones > button").addClass("desactivado")});
             }
         });
     });
@@ -54,7 +53,7 @@ $(document).ready(function() {
     });
     
     $(".aceptar").click(function() {
-        var nombre = textoAOracion($(".nombre .entrada").text().trim());
+        var nombre = textoANombre($(".nombre .entrada").text().trim());
         console.log(nombre);
 
         siguienteFase(function(){$(".atras").fadeIn("slow")});
@@ -105,14 +104,49 @@ $(document).ready(function() {
     $(".lugares .opcion").click(function() {
         var lugar = $(this).text();
         console.log(lugar);
-        siguienteFase();
+        siguienteFase(function() {}, function() {$("#horas").focus()});
     });
 
-    $(".tiempos .entrada").on("keypress", function(e) {
-        if (e.which < 48 || e.which > 57) {
-            e.preventDefault();
-            return;
+    $(".tiempos .entrada").on("change keyup", function() {
+        if ($("#horas").val() == 0 && $("#minutos").val() == 0) {
+            $(".tiempo .siguiente").addClass("desactivado").animate({opacity: 0});
+        } else {
+            $(".tiempo .siguiente").removeClass("desactivado").animate({opacity:1});
         }
-
+    }).focus(function(){
+        this.select();
     });
-})
+
+    $(".tiempo .siguiente").click(function() {
+        var tiempo = [parseInt($("#horas").val()), parseInt($("#minutos").val())];
+        console.log(tiempo);
+    });
+
+    $("#horas").on("change keyup focus", function() {
+        if ($(this).val() > 168) {
+            $(this).val("168");
+        } else if ($(this).val() < 0) {
+            $(this).val("0");
+        } else if ($(this).val() == 1) {
+            $(this).next().text(" hora con");
+        } else {
+            $(this).next().text(" horas con");
+        }
+    });
+
+    $("#minutos").on("change keyup focus", function() {
+        if ($(this).val() >= 60) {
+            $(this).val("59");
+        } else if ($(this).val() < 0) {
+            $(this).val("0");
+        } else if ($(this).val() == 1) {
+            $(this).next().text(" minuto");
+        } else {
+            $(this).next().text(" minutos");
+        }
+    }).keydown(function(e) {
+        if (e.which == 13) {
+            $(".tiempo .siguiente").click();
+        }
+    });
+});

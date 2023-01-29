@@ -15,7 +15,7 @@
 
         <div class="fase nombre">
             <span class="pregunta">¿Cuál es tu nombre?</span>
-            <div class="entrada" contenteditable="true"></div>
+            <div type="text" class="entrada" contenteditable="true"></div>
             <div class="botones">
                 <button class="boton borrar desactivado">Borrar</button>
                 <button class="boton aceptar desactivado">Aceptar</button>
@@ -83,11 +83,12 @@
         <div class="fase tiempo" style="display: none">
             <span class="pregunta">Duración aproximada del trabajo:</span>
             <div class="caja tiempos">
-                <div class="entrada" id="horas" contenteditable="true"></div>
+                <input type="number" class="entrada" id="horas" value="0"></input>
                 <div class="horas"> horas con</div>
-                <div class="entrada" id="minutos" contenteditable="true"></div>
+                <input type="number" class="entrada" id="minutos" value="0"></input>
                 <div class="minutos"> minutos</div>
             </div>
+            <button class="boton siguiente desactivado" style="opacity: 0;">Siguiente</button>
         </div>
 
         <button class="boton atras">Atrás</button>

@@ -54,7 +54,7 @@ a {
 .entrada {
     min-width: 70%;
     min-height: 1.875rem;
-    max-width: 50rem;
+    max-width: 100%;
     background-color: #FED308;
     border: 0.1875rem solid #000;
     border-style: none none solid none;
@@ -204,9 +204,13 @@ a {
     margin: 1rem 1rem 0.5rem 1rem;
 }
 
-.tiempos > div {
+.tiempos > * {
     min-width: 3rem;
     align-self: baseline;
+}
+
+.tiempos > input {
+    max-width: 4rem;
 }
 
 .horas {
