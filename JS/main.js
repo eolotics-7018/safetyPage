@@ -169,7 +169,7 @@ $(document).ready(function() {
     $(".final .aceptar").click(function() {
         // console.log(respuestas);
         // console.log(JSON.stringify(respuestas));
-        console.log($.param(respuestas));
+        // console.log($.param(respuestas));
         $("#php").attr("src", "https://sitiofandom.000webhostapp.com/php/almacena.php?" + $.param(respuestas));
     });
 });
@@ -177,6 +177,6 @@ $(document).ready(function() {
 window.addEventListener('message', event => {
     // Comprobamos si el mensaje viene de el sitio que queremos
     if (event.origin.startsWith("https://sitiofandom.000webhostapp.com")) {
-        alert(event.data);
+        console.log(event.data);
     }
 });
