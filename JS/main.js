@@ -18,6 +18,32 @@ function siguienteFase(funcionExtra, funcionCadena) {
     });
 }
 
+function setCookie(cname, cvalue, hours, minutes) {
+    const d = new Date();
+    // d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    d.setHours(d.getHours() + hours);
+    d.setMinutes(d.getMinutes() + minutes);
+    let expires = "expires="+d.toUTCString();
+    let c = cname + "=" + cvalue + ";" + expires + ";path=/";
+    console.log(c);
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+  
+function getCookie(cname) {
+    let name = cname + "=";
+    let ca = document.cookie.split(';');
+    for(let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+}
+
 $(document).ready(function() {
 
     const respuestas = {
@@ -30,11 +56,21 @@ $(document).ready(function() {
         fin: ":"
     };
 
+    const teclasEspeciales = [18, 17, 16, 37, 38, 39, 40, 8, 9, 20, 27, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 46, 36, 35, 33, 34, 144];
+
     $(".contenedor").fadeIn(800, function() {
         $(".nombre .entrada").focus().keydown(function(e) {
             if (e.which == 13) {
                 e.preventDefault();
                 $(".nombre .aceptar").click();
+            }
+            if ($(this).text().trim().length > 99) {
+                for (let i = 0; i < teclasEspeciales.length; i++) {
+                    if (e.which == teclasEspeciales[i]) {
+                        return;
+                    }
+                }
+                e.preventDefault();
             }
         }).keyup(function() {
             if ($(this).text().trim() != "") {
@@ -113,7 +149,7 @@ $(document).ready(function() {
     });
 
     $(".tiempos .entrada").on("change keyup", function() {
-        if ($("#horas").val() == 0 && $("#minutos").val() == 0) {
+        if (($("#horas").val() == 0 || $("#horas").val() == "") && ($("#minutos").val() == 0 || $("#minutos").val() == "")){
             $(".tiempo .siguiente").addClass("desactivado").animate({opacity: 0});
         } else {
             $(".tiempo .siguiente").removeClass("desactivado").animate({opacity:1});
@@ -123,19 +159,10 @@ $(document).ready(function() {
     });
 
     $(".tiempo .siguiente").click(function() {
-        let horas = parseInt($("#horas").val()), minutos = parseInt($("#minutos").val());
+        let horas = parseInt($("#horas").val() != ""? $("#horas").val() : "0"), minutos = parseInt($("#minutos").val());
 
         respuestas.duracion = horas + ":" + minutos;
         console.log(respuestas.duracion);
-        
-        let ahora = new Date();
-        respuestas.inicio = ahora.toLocaleDateString() + " - " + ahora.toLocaleTimeString();
-        console.log(respuestas.inicio);
-        
-        ahora.setMinutes(ahora.getMinutes() + minutos);
-        ahora.setHours(ahora.getHours() + horas);
-        respuestas.fin = ahora.toLocaleDateString() + " - " + ahora.toLocaleTimeString();
-        console.log(respuestas.fin);
     });
 
     $("#horas").on("change keyup focus", function() {
@@ -166,11 +193,27 @@ $(document).ready(function() {
         }
     });
 
-    $(".final .aceptar").click(function() {
+    $(".final .aceptar").one("click", function() {
         // console.log(respuestas);
         // console.log(JSON.stringify(respuestas));
-        // console.log($.param(respuestas));
-        $("#php").attr("src", "https://sitiofandom.000webhostapp.com/php/almacena.php?" + $.param(respuestas));
+        
+        let horas = parseInt($("#horas").val() != "" ? $("#horas").val() : "0");
+        let minutos = parseInt($("#minutos").val() != "" ? $("#minutos").val() : "0");
+        
+        let ahora = new Date();
+        respuestas.inicio = ahora.toLocaleDateString() + " - " + ahora.toLocaleTimeString();
+        console.log(respuestas.inicio);
+        
+        ahora.setMinutes(ahora.getMinutes() + minutos);
+        ahora.setHours(ahora.getHours() + horas);
+        respuestas.fin = ahora.toLocaleDateString() + " - " + ahora.toLocaleTimeString();
+        console.log(respuestas.fin);
+        
+        if (getCookie("trabajando") != "si") {
+            setCookie("trabajando", "si", horas, minutos);
+            console.log($.param(respuestas));
+            $("#php").attr("src", "https://sitiofandom.000webhostapp.com/php/almacena.php?" + $.param(respuestas));
+        }
     });
 });
 
