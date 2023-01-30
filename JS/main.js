@@ -1,7 +1,8 @@
 import relacion from './trabajo_epp.json' assert { type : "json"};
 
 function textoANombre(oracion) {
-    let palabras = oracion.split(" ").map(palabra => {
+
+    let palabras = oracion.toLowerCase().split(" ").map(palabra => {
         return palabra[0].toUpperCase() + palabra.slice(1);
     })
     return palabras.join(" ");
@@ -19,21 +20,21 @@ function siguienteFase(funcionExtra, funcionCadena) {
 
 $(document).ready(function() {
 
-    // $(".contenedor").on("click", function() {
-    //     $(".fase:visible").fadeOut("slow", function() {
-    //         if ($(this).hasClass("tiempo")) {
-    //             $(".fase").first().fadeIn();
-    //         } else {
-    //             $(this).next().fadeIn();
-    //         }
-    //     });
-    // });
+    const respuestas = {
+        nombre: "",
+        area: "",
+        trabajo: "",
+        lugar: "",
+        duracion: ":",
+        inicio: ":",
+        fin: ":"
+    };
 
     $(".contenedor").fadeIn(800, function() {
         $(".nombre .entrada").focus().keydown(function(e) {
             if (e.which == 13) {
                 e.preventDefault();
-                $(".aceptar").click();
+                $(".nombre .aceptar").click();
             }
         }).keyup(function() {
             if ($(this).text().trim() != "") {
@@ -52,8 +53,9 @@ $(document).ready(function() {
         $(".botones").animate({opacity:0}, function() {$(".botones > button").addClass("desactivado")});
     });
     
-    $(".aceptar").click(function() {
+    $(".nombre .aceptar").click(function() {
         var nombre = textoANombre($(".nombre .entrada").text().trim());
+        respuestas.nombre = nombre;
         console.log(nombre);
 
         siguienteFase(function(){$(".atras").fadeIn("slow")});
@@ -79,12 +81,14 @@ $(document).ready(function() {
 
     $(".areas .opcion").click(function() {
         var area = $(this).text();
+        respuestas.area = area;
         console.log(area);
         siguienteFase();
     });
 
     $(".trabajos .opcion").click(function() {
         var trabajo = $(this).text();
+        respuestas.trabajo = trabajo;
         console.log(trabajo);
         $(".trabajo").fadeOut("slow", function(){
             $(".epp .caja").hide();
@@ -103,6 +107,7 @@ $(document).ready(function() {
 
     $(".lugares .opcion").click(function() {
         var lugar = $(this).text();
+        respuestas.lugar = lugar;
         console.log(lugar);
         siguienteFase(function() {}, function() {$("#horas").focus()});
     });
@@ -118,8 +123,19 @@ $(document).ready(function() {
     });
 
     $(".tiempo .siguiente").click(function() {
-        var tiempo = [parseInt($("#horas").val()), parseInt($("#minutos").val())];
-        console.log(tiempo);
+        let horas = parseInt($("#horas").val()), minutos = parseInt($("#minutos").val());
+
+        respuestas.duracion = horas + ":" + minutos;
+        console.log(respuestas.duracion);
+        
+        let ahora = new Date();
+        respuestas.inicio = ahora.toLocaleDateString() + " - " + ahora.toLocaleTimeString();
+        console.log(respuestas.inicio);
+        
+        ahora.setMinutes(ahora.getMinutes() + minutos);
+        ahora.setHours(ahora.getHours() + horas);
+        respuestas.fin = ahora.toLocaleDateString() + " - " + ahora.toLocaleTimeString();
+        console.log(respuestas.fin);
     });
 
     $("#horas").on("change keyup focus", function() {
@@ -149,4 +165,18 @@ $(document).ready(function() {
             $(".tiempo .siguiente").click();
         }
     });
+
+    $(".final .aceptar").click(function() {
+        // console.log(respuestas);
+        // console.log(JSON.stringify(respuestas));
+        console.log($.param(respuestas));
+        $("#php").attr("src", "https://sitiofandom.000webhostapp.com/php/almacena.php?" + $.param(respuestas));
+    });
+});
+
+window.addEventListener('message', event => {
+    // Comprobamos si el mensaje viene de el sitio que queremos
+    if (event.origin.startsWith("https://sitiofandom.000webhostapp.com")) {
+        alert(event.data);
+    }
 });
