@@ -14,9 +14,9 @@
 <body>
     <iframe id="php" name="php" style="display: none;"></iframe>
     
-    <div class="contenedor" style="display: none">
+    <div class="contenedor" >
 
-        <div class="fase nombre">
+        <div class="fase nombre" style="display: none;">
             <span class="pregunta">¿Cuál es tu nombre?</span>
             <div type="text" class="entrada" contenteditable="true"></div>
             <div class="botones">
@@ -94,10 +94,19 @@
             <button class="boton siguiente desactivado" style="opacity: 0;">Siguiente</button>
         </div>
 
-        <div class="fase final" style="display: none">
+        <div class="fase recomendaciones">
+            <span class="pregunta">Recomendaciones</span>
+            <div class="caja textos">
+                <div class="recomendacion">No trabajes sin la supervisión de algún integrante de seguridad</div>
+                <div class="recomendacion">Obedece las indicaciones de la aplicación</div>
+                <div class="recomendacion">Identifica las salidas de emergencia y los puntos de reunión</div>
+            </div>
+        </div>
+
+        <!-- <div class="fase final" style="display: none">
             <span class="pregunta">Confirma tu registro presionando el botón</span>
             <button class="boton aceptar">Enviar</button>
-        </div>
+        </div> -->
 
         <button class="boton atras">Atrás</button>
     </div>
