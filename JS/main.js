@@ -1,21 +1,50 @@
 import relacion from './trabajo_epp.json' assert { type : "json"};
+import f from './frases.json' assert { type : "json"};
+const frases = f.frases || {};
 
 function textoANombre(oracion) {
-
     let palabras = oracion.toLowerCase().split(" ").map(palabra => {
         return palabra[0].toUpperCase() + palabra.slice(1);
     })
     return palabras.join(" ");
 }
 
-function siguienteFase(funcionExtra, funcionCadena) {
+function milisegundosATexto(ms) {
+    const seg = Math.floor(ms / 1000);
+    const dias = Math.floor(seg / 86400);
+    const horas = Math.floor((seg % 86400) / 3600);
+    const minutos = Math.floor(((seg % 86400) % 3600) / 60);
+    const segundos = ((seg % 86400) % 3600) % 60;
+    let tiempo = '';
+    if (dias !== 0) {
+        tiempo += `${dias}d `;
+    }
+    if (horas !== 0) {
+        tiempo += `${horas}h `;
+    }
+    if (minutos !== 0) {
+        tiempo += `${minutos}m `;
+    }
+    if (segundos !== 0) {
+        tiempo += `${segundos}s `;
+    }
+    return tiempo.trim();
+}
+
+function transicion(elemento, funcionExtra, funcionCadena) {
     funcionExtra = funcionExtra || function() {};
     funcionCadena = funcionCadena || function() {};
 
-    $(".fase:visible").fadeOut("slow", function(){
+    $(elemento+":visible").fadeOut("slow", function(){
         funcionExtra();
         $(this).next().fadeIn("slow", funcionCadena);
     });
+}
+
+function siguienteFase(funcionExtra, funcionCadena) {
+    funcionExtra = funcionExtra || function() {};
+    funcionCadena = funcionCadena || function() {};
+    transicion(".fase", funcionExtra, funcionCadena);
 }
 
 function setCookie(cname, cvalue, hours, minutes) {
@@ -193,7 +222,20 @@ $(document).ready(function() {
         }
     });
 
-    $(".final .aceptar").one("click", function() {
+    $(".recomendaciones .siguiente").off("click").click(function() {
+        if ($(".recomendaciones .textos:visible").get().length) {
+            transicion(".caja");
+        } else {
+            siguienteFase();
+        }
+    });
+
+    $("#frase").text(function() {
+        let indiceAleatorio = Math.floor(Math.random() * frases.length);
+        return frases[indiceAleatorio];
+    })
+
+    $(".final .aceptar").on("click", function() {
         // console.log(respuestas);
         // console.log(JSON.stringify(respuestas));
         
@@ -209,10 +251,14 @@ $(document).ready(function() {
         respuestas.fin = ahora.toLocaleDateString() + " - " + ahora.toLocaleTimeString();
         console.log(respuestas.fin);
         
-        if (getCookie("trabajando") != "si") {
-            setCookie("trabajando", "si", horas, minutos);
-            console.log($.param(respuestas));
+        if (getCookie("fin") == "") {
+            setCookie("fin", ahora, horas, minutos);
+            // console.log($.param(respuestas));
             $("#php").attr("src", "https://sitiofandom.000webhostapp.com/php/almacena.php?" + $.param(respuestas));
+        } else {
+            let fin = new Date(getCookie("fin")).getTime();
+            $(".error").text("Faltan " + milisegundosATexto(fin - Date.now()) + " para que puedas volver a registrarte");
+            $(".error").finish().css("opacity", 1).animate({opacity:0}, 2000);
         }
     });
 });

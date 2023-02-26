@@ -230,6 +230,31 @@ a {
     border-radius: 0.3125rem;
 }
 
+.recuerda {
+    font-size: 2rem;
+    color: #00af3a;
+    text-shadow: 0.0625rem 0.0625rem #000;
+}
+
+.error {
+    position: absolute;
+    top: 0;
+    color: darkred;
+    font-size: 1.75rem;
+    opacity: 0;
+}
+
+@keyframes subir {
+    0% {
+        transform: translate(0%, 100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translate(0%, 0%);
+        opacity: 1;
+    }
+}
+
 @media only screen and (min-width: 786px){
     html {
         font-size: 1.4em;
