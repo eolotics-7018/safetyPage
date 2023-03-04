@@ -127,6 +127,13 @@ $(document).ready(function() {
     });
 
     $(".atras").click(function() {
+        if ($(".recomendaciones .frase:visible").get().length) {
+            $(".recomendaciones .frase:visible").fadeOut("slow", function() {
+                $(this).prev().fadeIn();
+            });
+            return;
+        }
+
         if ($(".fase:visible").fadeOut("slow", function(){
             $(this).prev().fadeIn();
         }).prev().hasClass("nombre")) {
@@ -233,7 +240,7 @@ $(document).ready(function() {
     $("#frase").text(function() {
         let indiceAleatorio = Math.floor(Math.random() * frases.length);
         return frases[indiceAleatorio];
-    })
+    });
 
     $(".final .aceptar").on("click", function() {
         // console.log(respuestas);
@@ -257,15 +264,21 @@ $(document).ready(function() {
             $("#php").attr("src", "https://sitiofandom.000webhostapp.com/php/almacena.php?" + $.param(respuestas));
         } else {
             let fin = new Date(getCookie("fin")).getTime();
-            $(".error").text("Faltan " + milisegundosATexto(fin - Date.now()) + " para que puedas volver a registrarte");
-            $(".error").finish().css("opacity", 1).animate({opacity:0}, 2000);
+            $(".alerta").text("Faltan " + milisegundosATexto(fin - Date.now()) + " para que puedas volver a registrarte");
+            $(".alerta").finish().css({opacity: 1, color: "darkred"}).animate({opacity:0}, 2000);
         }
     });
 });
 
+var phpResponse;
+
 window.addEventListener('message', event => {
     // Comprobamos si el mensaje viene de el sitio que queremos
     if (event.origin.startsWith("https://sitiofandom.000webhostapp.com")) {
-        console.log(event.data);
+        phpResponse = event.data;
+        if (phpResponse.startsWith("Almacené")) {
+            $(".alerta").text("Los datos se registraron correctamente");
+            $(".alerta").finish().css({opacity: 1, color: "limegreen"}).animate({opacity:0}, 4000);
+        }
     }
 });
